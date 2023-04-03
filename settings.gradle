@@ -14,3 +14,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "CoffeeShop"
 include ':app'
+include ':features:sign_up'
+include ':features:home'
+include ':core:common'

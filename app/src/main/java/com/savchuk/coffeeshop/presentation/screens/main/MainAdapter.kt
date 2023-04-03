@@ -1,4 +1,4 @@
-package com.savchuk.coffeeshop.presentation
+package com.savchuk.coffeeshop.presentation.screens.main
 
 import android.view.LayoutInflater
 import android.view.View
@@ -13,28 +13,42 @@ import com.savchuk.coffeeshop.data.Coffee
 
 class MainAdapter : ListAdapter<Coffee, MainAdapter.MainViewHolder>(DiffUtil()) {
 
-    class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    private lateinit var listener: SetOnClickListener
+
+    class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val titleItemTextView = itemView.findViewById<TextView>(R.id.titleItemTextView)
         private val priceItemTextView = itemView.findViewById<TextView>(R.id.priceItemTextView)
         private val itemImageView = itemView.findViewById<ImageView>(R.id.itemImage)
 
-        fun bind(coffee: Coffee){
+        fun bind(coffee: Coffee) {
             titleItemTextView.text = coffee.name
             priceItemTextView.text = "$ ${coffee.price}.00"
             itemImageView.setImageResource(coffee.image_url)
-
 
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         return MainViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.coffee_item2, parent, false)
+            LayoutInflater
+                .from(parent.context)
+                .inflate(R.layout.coffee_item2, parent, false)
         )
     }
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         holder.bind(getItem(position))
+        holder.itemView.setOnClickListener {
+            listener.onItemClick(position)
+        }
+    }
+
+    fun setOnClickListener(listener: SetOnClickListener) {
+        this.listener = listener
+    }
+
+    interface SetOnClickListener {
+        fun onItemClick(position: Int)
     }
 }
 
@@ -46,5 +60,4 @@ class DiffUtil : DiffUtil.ItemCallback<Coffee>() {
     override fun areContentsTheSame(oldItem: Coffee, newItem: Coffee): Boolean {
         return oldItem == newItem
     }
-
 }

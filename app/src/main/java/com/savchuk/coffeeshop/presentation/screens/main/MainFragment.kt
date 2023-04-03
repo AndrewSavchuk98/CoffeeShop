@@ -5,12 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.savchuk.coffeeshop.R
 import com.savchuk.coffeeshop.data.Coffee
 import com.savchuk.coffeeshop.data.SimpleCoffeeRepository
 import com.savchuk.coffeeshop.databinding.FragmentMainBinding
-import com.savchuk.coffeeshop.presentation.MainAdapter
+import com.savchuk.coffeeshop.presentation.screens.main.MainAdapter
 
 class MainFragment : Fragment() {
 
@@ -50,7 +51,14 @@ class MainFragment : Fragment() {
         list.add(Coffee(name = "Green tea", price = 25))
 
         adapter.submitList(SimpleCoffeeRepository.listOfCoffee)
+        adapter.setOnClickListener(object : MainAdapter.SetOnClickListener{
+            override fun onItemClick(position: Int) {
+                Toast.makeText(context, "Position is: $position", Toast.LENGTH_LONG).show()
+            }
+
+        })
         binding.recyclerView.adapter = adapter
+
 
 
     }
