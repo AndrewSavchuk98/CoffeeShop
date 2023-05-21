@@ -1,0 +1,6 @@
+int id cartCounterTextView 0x0
+int id cartIconContainer 0x0
+int id fragmentContainer 0x0
+int id toolbar 0x0
+int id usernameTextView 0x0
+int layout activity_main 0x0
