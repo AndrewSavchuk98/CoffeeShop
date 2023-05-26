@@ -1,8 +1,8 @@
 package com.savchuk.andrew.home.domain
 
-import com.savchuk.andrew.home.domain.entities.Product
+import com.savchuk.andrew.nestedrecyclertest.domain.entities.SectionEntities
 
 interface ProductRepository {
 
-    suspend fun getFeaturesProducts(): List<Product>
+    suspend fun getSectionProducts(): List<SectionEntities>
 }

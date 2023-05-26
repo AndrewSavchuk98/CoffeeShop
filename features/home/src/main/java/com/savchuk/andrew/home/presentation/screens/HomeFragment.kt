@@ -8,13 +8,15 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.savchuk.andrew.home.databinding.FragmentHomeBinding
 import com.savchuk.andrew.home.presentation.HomeViewModel
-import com.savchuk.andrew.home.presentation.adapters.ParentAdapter
-import com.savchuk.andrew.home.presentation.entities.ParentModel
-import com.savchuk.andrew.home.presentation.entities.ProductItemUi
+import com.savchuk.andrew.home.domain.entities.Product
+import com.savchuk.andrew.home.presentation.adapters.ProductAdapter
+import com.savchuk.andrew.nestedrecyclertest.domain.entities.SectionEntities
+import com.savchuk.andrew.home.presentation.adapters.SectionAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), SectionAdapter.OnSectionClickListener,
+    ProductAdapter.OnProductClickListener {
 
     private lateinit var binding: FragmentHomeBinding
 
@@ -26,23 +28,30 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        val list = mutableListOf<ProductItemUi>()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        list.add(ProductItemUi(title = "Coffee", imageSrc = ""))
-        list.add(ProductItemUi(title = "Coffee", imageSrc = ""))
-        list.add(ProductItemUi(title = "Coffee", imageSrc = ""))
-        list.add(ProductItemUi(title = "Coffee", imageSrc = ""))
-        list.add(ProductItemUi(title = "Coffee", imageSrc = ""))
+        val adapter = SectionAdapter()
+        viewModel.homeState.observe(viewLifecycleOwner) {
 
-        val parentList = mutableListOf<ParentModel>()
-        parentList.add(ParentModel("Features", list))
-        parentList.add(ParentModel("Newest", list))
-        parentList.add(ParentModel("Latest", list))
-        parentList.add(ParentModel("Newest", list))
-        val adapter = ParentAdapter(parentList)
+            adapter.submitList(it.sectionList)
+        }
 
         binding.parentRecyclerView.adapter = adapter
-        return binding.root
+
+        adapter.setSectionListener(this)
+        adapter.setInnerListener(this)
+
+    }
+
+    override fun onClick(product: Product) {
+        viewModel.launchDetailProduct(productId = product.id)
+    }
+
+    override fun onSectionClick(sectionEntities: SectionEntities) {
+        viewModel.launchProductMore(sectionEntities.id)
     }
 }
