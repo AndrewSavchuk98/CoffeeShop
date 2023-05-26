@@ -10,7 +10,7 @@ import com.savchuk.andrew.home.databinding.FragmentHomeBinding
 import com.savchuk.andrew.home.presentation.HomeViewModel
 import com.savchuk.andrew.home.domain.entities.Product
 import com.savchuk.andrew.home.presentation.adapters.ProductAdapter
-import com.savchuk.andrew.nestedrecyclertest.domain.entities.SectionEntities
+import com.savchuk.andrew.home.domain.entities.SectionEntities
 import com.savchuk.andrew.home.presentation.adapters.SectionAdapter
 import dagger.hilt.android.AndroidEntryPoint
 

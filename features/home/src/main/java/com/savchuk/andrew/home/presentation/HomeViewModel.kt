@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.savchuk.andrew.home.domain.usecases.GetSectionsUseCase
-import com.savchuk.andrew.nestedrecyclertest.domain.entities.SectionEntities
+import com.savchuk.andrew.home.domain.entities.SectionEntities
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

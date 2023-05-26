@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.savchuk.andrew.home.databinding.SectionItemBinding
-import com.savchuk.andrew.nestedrecyclertest.domain.entities.SectionEntities
+import com.savchuk.andrew.home.domain.entities.SectionEntities
 
 class SectionAdapter : RecyclerView.Adapter<SectionAdapter.SectionViewHolder>() {
 

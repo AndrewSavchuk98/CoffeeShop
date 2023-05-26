@@ -1,6 +1,4 @@
-package com.savchuk.andrew.nestedrecyclertest.domain.entities
-
-import com.savchuk.andrew.home.domain.entities.Product
+package com.savchuk.andrew.home.domain.entities
 
 data class SectionEntities(
     val id: Int,
