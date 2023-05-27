@@ -60,4 +60,7 @@ dependencies {
 
     implementation project( ":features:home")
     implementation project( ":features:sign_up")
+    implementation project( ":navigation")
+
+
 }

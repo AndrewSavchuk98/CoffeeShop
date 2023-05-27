@@ -1,4 +1,4 @@
-package com.savchuk.andrew.navigation
+package com.savchuk.coffeeshop.navigation
 
 import org.junit.Test
 
