@@ -58,6 +58,13 @@ dependencies {
     implementation "com.google.dagger:hilt-android:2.44"
     kapt "com.google.dagger:hilt-compiler:2.44"
 
+    def nav_version = "2.5.3"
+
+    // Kotlin
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+
     implementation project( ":features:home")
     implementation project( ":features:sign_up")
     implementation project( ":navigation")
