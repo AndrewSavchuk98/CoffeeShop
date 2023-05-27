@@ -3,8 +3,11 @@ package com.savchuk.coffeeshop.data
 import com.savchuk.coffeeshop.data.entities.ProductRemote
 import com.savchuk.coffeeshop.data.entities.SectionRemote
 import com.savchuk.coffeeshop.data.sources.ProductDataSource
+import javax.inject.Inject
 
-class BaseProductDataRepository(private val productDataSource: ProductDataSource) :
+class BaseProductDataRepository @Inject constructor(
+    private val productDataSource: ProductDataSource
+) :
     ProductDataRepository {
     override suspend fun getSections(): List<SectionRemote> {
         TODO("Not yet implemented")
@@ -15,6 +18,6 @@ class BaseProductDataRepository(private val productDataSource: ProductDataSource
     }
 
     override suspend fun getProducts(): List<ProductRemote> {
-        TODO("Not yet implemented")
+        return productDataSource.getProducts()
     }
 }
