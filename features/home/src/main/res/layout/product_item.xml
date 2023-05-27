@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="12dp"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/itemImage"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:contentDescription="@string/coffee"
+        android:scaleType="fitXY"
+        android:src="@drawable/americano_150x200scale6_00x" />
+
+    <TextView
+        android:id="@+id/titleItemTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLength="10"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:text="Americano" />
+
+</LinearLayout>
