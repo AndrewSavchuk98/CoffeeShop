@@ -4,5 +4,5 @@ interface HomeRouter {
 
     fun launchMoreProducts(sectionId: Int)
 
-    fun launchProductDetail(productId: Int)
+    fun launchProductDetail(productId: String)
 }

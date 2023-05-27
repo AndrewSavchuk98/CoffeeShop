@@ -30,7 +30,7 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun launchDetailProduct(productId: Int) {
+    fun launchDetailProduct(productId: String) {
         homeRouter.launchProductDetail(productId)
     }
 
